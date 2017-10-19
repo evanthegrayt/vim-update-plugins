@@ -14,18 +14,25 @@ function s:print_list_of_lists(list)
   endfor
 endfunction
 
-
 function! g:UpdatePlugins()
-  if v:version >= 800 && isdirectory($HOME . "/.vim/pack/")
-    let l:plugindirs = globpath($HOME, '/.vim/pack/*/start/*/', 0, 1)
-  elseif v:version >= 700 && isdirectory($HOME . "/.vim/bundle/")
-    let l:plugin_location = $HOME . '/.vim/bundle/'
-    let l:plugindirs = split(globpath(l:plugin_location, '*', 0))
-  else
-    echom "Cound not find a valid plugin directory"
-    return
+  if !exists("g:update_plugins_print_results")
+    let g:update_plugins_print_results = 1
   endif
 
+  if exists("g:update_plugins_directory")
+    let l:plugin_parent_dir = g:update_plugins_directory
+  else
+    if v:version >= 800 && isdirectory($HOME . "/.vim/pack/")
+      let l:plugin_parent_dir = $HOME . '/.vim/pack/*/start/'
+    elseif v:version >= 700 && isdirectory($HOME . "/.vim/bundle/")
+      let l:plugin_parent_dir = $HOME . '/.vim/bundle/'
+    else
+      echom "Cound not find a valid plugin directory!"
+      return
+    endif
+  endif
+
+  let l:plugindirs = split(globpath(l:plugin_parent_dir, '*', 0))
   call filter(l:plugindirs, 'isdirectory(v:val)')
 
   let l:success = []
@@ -37,7 +44,8 @@ function! g:UpdatePlugins()
     if isdirectory(l:plugindir . '/.git')
       try
         let l:cmd = 'cd ' . l:plugindir . ' && git pull origin master'
-        silent! let l:output = system(l:cmd)
+        let l:output = 'Already up-to-date' " for testing
+        "silent! let l:output = system(l:cmd)
         if l:output =~? 'Already up-to-date'
           call add(l:uptodate, l:plugindir)
         else
@@ -52,9 +60,13 @@ function! g:UpdatePlugins()
     endif
   endfor
 
-  call s:print_list_of_lists([['Updated:',            l:success],
-        \                     ['Already Up-to-date:', l:uptodate],
-        \                     ['Not a Git Repo:',     l:not_git]])
+  if g:update_plugins_print_results
+    call s:print_list_of_lists([['Updated:',            l:success],
+          \                     ['Already Up-to-date:', l:uptodate],
+          \                     ['Not a Git Repo:',     l:not_git]])
+  else
+    echom "Done"
+  endif
 
 endfunction
 
