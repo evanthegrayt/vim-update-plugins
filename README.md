@@ -1,4 +1,4 @@
-# UpdatePlugins
+# UpdatePlugins (vim)
 Easily update vim plugins. I was bored recently, and decided to learn vimscript.
 This is the first plugin I've made, so apologies if it's crude. Also, I'm aware
 that plugins like this exist; it was more of a learning experience for me.
@@ -8,14 +8,18 @@ structure (`~/.vim/pack/*/start/*/`).
 
 ## Quick Start
 By default, you start the process by using `:UpdatePlugins`. You can also create
-your own mapping. For example: `nnoremap <leader>up :call g:UpdatePlugins()<CR>`
+your own mapping. For example, you can add the following line to your `~/.vimrc`:
+
+```
+nnoremap <leader>up :call g:UpdatePlugins()<CR>
+```
 
 ## Features
 Attempts to update all plugins in your `vim` plugin directory.
 
 If you're running version 8 or higher, it will first look in
-`~/.vim/pack/*/start/*`. If you're running version 7 or higher, or you're not
-using the `pack` directory structure, it will look in `~/.vim/bundle/*`
+`~/.vim/pack/*/start/*/`. If you're running version 7 or higher, or you're not
+using the `pack` directory structure, it will look in `~/.vim/bundle/*/`
 
 Once finished, the plugin will `echom` the results. To turn this feature off,
 see the `Variables` section below.
