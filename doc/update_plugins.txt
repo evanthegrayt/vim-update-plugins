@@ -1,0 +1,30 @@
+update-plugins.txt    Updates all plugins for vim if they're a git repository
+update-plugins UpdatePlugins update_plugins
+
+==============================================================================
+Author:  Evan Gray <egray1985@gmail.com>                       *UpdatePlugins*
+License: Same terms as Vim itself (see |license|)
+
+==============================================================================
+INTRODUCTION                                      *UpdatePlugins-introduction*
+
+This plugin is just a quick script that will update plugins, assuming they're
+a git repository.
+
+:UpdatePlugins
+
+    Spin through plugin directories, and if it's a git repository, pull down
+    from master.
+
+==============================================================================
+CONFIGURATION                                    *UpdatePlugins-configuration*
+
+By default, you can update your plugins by calling
+>
+        :UpdatePlugins
+<
+You can add your own custom bindings. Example:
+>
+        :nnoremap <leader>UP :call g:UpdatePlugins()<CR>
+<
+
