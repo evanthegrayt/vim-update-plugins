@@ -65,7 +65,7 @@ function! g:UpdatePlugins()
           \                     ['Already Up-to-date:', l:uptodate],
           \                     ['Not a Git Repo:',     l:not_git]])
   else
-    echom "Done"
+    echo "Done..."
   endif
 
 endfunction
