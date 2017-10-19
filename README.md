@@ -8,7 +8,7 @@ structure (`~/.vim/pack/*/start/*/`).
 
 ## Quick Start
 By default, you start the process by using `:UpdatePlugins`. You can also create
-your own mapping. For example: `nnoremap <leader>UP :call g:UpdatePlugins()<CR>`
+your own mapping. For example: `nnoremap <leader>up :call g:UpdatePlugins()<CR>`
 
 ## Features
 Attempts to update all plugins in your `vim` plugin directory.

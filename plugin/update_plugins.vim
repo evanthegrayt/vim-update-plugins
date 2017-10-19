@@ -44,8 +44,8 @@ function! g:UpdatePlugins()
     if isdirectory(l:plugindir . '/.git')
       try
         let l:cmd = 'cd ' . l:plugindir . ' && git pull origin master'
-        let l:output = 'Already up-to-date' " for testing
-        "silent! let l:output = system(l:cmd)
+        "let l:output = 'Already up-to-date' " for testing
+        silent! let l:output = system(l:cmd)
         if l:output =~? 'Already up-to-date'
           call add(l:uptodate, l:plugindir)
         else
