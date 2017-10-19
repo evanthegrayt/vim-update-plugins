@@ -8,7 +8,7 @@ Attempts to update all plugins in your `vim` plugin directory.
 
 If you're running version 8 or higher, it will first look in
 `~/.vim/pack/*/start/*`. If you're running version 7 or higher, or you're not
-using the `pack` directory structure, it will look in `~/.vim/bundle/*`.
+using the `pack` directory structure, it will look in `~/.vim/bundle/*`
 
 Once finished, the plugin will `echom` the results. To turn this feature off,
 see the `Variables` section below.
@@ -23,13 +23,13 @@ let g:update_plugins_directory = '/full/path/to/directory/'
 
 If you're using a `pack` directory with sub-directories, use the `*` wildcard.
 The vim8 example for Mac would be (and is, by default):
-`/Users/USER/.vim/pack/*/start/`.
+`/Users/USER/.vim/pack/*/start/`
 
-To turn off the messages list once the pluginis finished, add the following line
-to your `~/.vimrc`:
+To turn off the messages list once the plugin is finished, add the following
+line to your `~/.vimrc`:
 
 ```
-let g:update_plugins_print_results = 0`
+let g:update_plugins_print_results = 0
 ```
 
 ## Mappings
