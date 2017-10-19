@@ -3,8 +3,29 @@ Easily update vim plugins. I was bored recently, and decided to learn vimscript.
 This is the first plugin I've made, so apologies if it's crude. Also, I'm aware
 that plugins like this exist; it was more of a learning experience for me.
 
-This plugin is compatible with vim8, and it's "new" `packages` directory
+This plugin is compatible with `Vim80`, and it's "new" `packages` directory
 structure (`~/.vim/pack/*/start/*/`).
+
+## Installation
+Since this plugin is for updating other plugins from `git` repositories, I
+assume you're either running `Vim80` with the `packages` feature, or using
+`vim70` with something like `pathogen`. To install:
+### Vim80 + Packages
+To install with `Vim80` with `packages` (replace PLUGIN_DIRECTORY with the
+package name)
+
+```
+cd ~/.vim/pack/PLUGIN_DIRECTORY/start/
+git clone https://github.com/evanthegrayt/update-plugins.git
+```
+
+### Pathogen
+To install using pathogen:
+
+```
+cd ~/.vim/bundle/
+git clone https://github.com/evanthegrayt/update-plugins.git
+```
 
 ## Quick Start
 By default, you start the process by using `:UpdatePlugins`. You can also create
@@ -35,7 +56,7 @@ let g:update_plugins_directory = '/full/path/to/directory/'
 ```
 
 If you're using a `pack` directory with sub-directories, use the `*` wildcard.
-The vim8 example for Mac would be (and is, by default):
+The `Vim80` example for Mac would be (and is, by default):
 `/Users/USER/.vim/pack/*/start/`
 
 ### Messages
