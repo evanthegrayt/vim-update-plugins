@@ -15,11 +15,11 @@ assume you're either running `Vim80` with the `packages` feature, or using
 at least `Vim70` (including `Vim80`) with something like `pathogen`.
 
 ### Vim80 + Packages
-To install with `Vim80` with `packages` (replace PLUGIN_DIRECTORY with the
+To install with `Vim80` with `packages` (replace PACKAGE_DIRECTORY with the
 package name)
 
 ```bash
-cd ~/.vim/pack/PLUGIN_DIRECTORY/start/
+cd ~/.vim/pack/PACKAGE_DIRECTORY/start/
 git clone https://github.com/evanthegrayt/update-plugins.git
 ```
 
