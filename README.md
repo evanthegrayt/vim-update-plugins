@@ -6,7 +6,7 @@ vimscript. This is the first plugin I've made, so apologies if it's crude.
 Also, I'm aware that (better) plugins like this exist; it was more of a 
 learning experience for me.
 
-This plugin is compatible with `Vim80`, and it's "new" `packages` directory
+This plugin is compatible with `Vim80`, and its "new" `packages` directory
 structure (`~/.vim/pack/*/start/*/`), but still supports the old "standard"
 `bundle` directory structure (`~/.vim/bundle/`).
 
