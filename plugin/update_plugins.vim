@@ -5,6 +5,9 @@
 
 if exists('g:update_plugins_is_loaded')
   finish
+elseif v:version < 700
+  echom "UpdatePlugins: Vim version [ " . v:version . " not supported..."
+  finish
 endif
 
 let g:update_plugins_is_loaded = 1

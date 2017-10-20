@@ -2,11 +2,8 @@
 function! update_plugins#set_directory()
   if v:version >= 800 && isdirectory($HOME . "/.vim/pack/")
     return $HOME . '/.vim/pack/*/start/'
-  elseif v:version >= 700 && isdirectory($HOME . "/.vim/bundle/")
+  elseif isdirectory($HOME . "/.vim/bundle/")
     return $HOME . '/.vim/bundle/'
-  elseif v:version < 700
-    echom "UpdatePlugins: Vim version not supported..."
-    finish
   else
     echom "UpdatePlugins: Cound not find a valid plugin directory!"
     finish
