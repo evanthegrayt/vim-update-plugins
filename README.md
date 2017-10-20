@@ -12,7 +12,8 @@ structure (`~/.vim/pack/*/start/*/`), but still supports the old "standard"
 ## Installation
 Since this plugin is for updating other plugins from `git` repositories, I
 assume you're either running `Vim80` with the `packages` feature, or using
-`vim70` with something like `pathogen`.
+at least `Vim70` (including `Vim80`) with something like `pathogen`.
+
 ### Vim80 + Packages
 To install with `Vim80` with `packages` (replace PLUGIN_DIRECTORY with the
 package name)
@@ -36,7 +37,7 @@ your own mapping. For example, you can add the following line to your
 `~/.vimrc`:
 
 ```vim
-nnoremap <leader>up :call g:UpdatePlugins()<CR>
+nnoremap <leader>up :call update_plugins#start()<CR>
 ```
 
 ## Features
@@ -47,13 +48,13 @@ If you're running version 8 or higher, it will first look in
 using the `pack` directory structure, it will look in `~/.vim/bundle/*/`
 
 Once finished, the plugin will `echom` the results. To turn this feature off,
-see the `Variables` section below.
+see the `Configuration` section below.
 
 Lastly, not too much of a feature, but since it loops through all plugins, it
 can take a minute to run. If you find you don't have time to let it run, ctrl-c
 is supported, and will cancel the remaining updates.
 
-## Variables
+## Configuration
 If you don't like the default behavior, there are some modifications available.
 ### Plugin Directory Location
 To manually set the location of your plugin directory, add the following line to
