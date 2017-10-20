@@ -1,22 +1,24 @@
 # UpdatePlugins (vim)
 Easily update vim plugins.
 
-I was bored recently, and decided to learn vimscript.
-This is the first plugin I've made, so apologies if it's crude. Also, I'm aware
-that plugins like this exist; it was more of a learning experience for me.
+I recently had an itch to learn something new, so I decided to try some 
+vimscript. This is the first plugin I've made, so apologies if it's crude.
+Also, I'm aware that (better) plugins like this exist; it was more of a 
+learning experience for me.
 
 This plugin is compatible with `Vim80`, and it's "new" `packages` directory
 structure (`~/.vim/pack/*/start/*/`), but still supports the old "standard"
-`bundle` directory structure (`~/.vim/bundle`).
+`bundle` directory structure (`~/.vim/bundle/`).
 
 ## Installation
 Since this plugin is for updating other plugins from `git` repositories, I
 assume you're either running `Vim80` with the `packages` feature, or using
-at least `Vim70` (including `Vim80`) with something like `pathogen`.
+at least `Vim70` (including `Vim80`) with something like 
+[pathogen](https://github.com/tpope/vim-pathogen).
 
 ### Vim80 + Packages
-To install with `Vim80` with `packages` (replace PACKAGE_DIRECTORY with the
-package name)
+To install with `Vim80`, using the `packages` feature (replace
+PACKAGE_DIRECTORY with the package name)
 
 ```bash
 cd ~/.vim/pack/PACKAGE_DIRECTORY/start/
