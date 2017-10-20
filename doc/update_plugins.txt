@@ -1,30 +1,66 @@
 update-plugins.txt    Updates all plugins for vim if they're a git repository
 update-plugins UpdatePlugins update_plugins
 
-==============================================================================
-Author:  Evan Gray <egray1985@gmail.com>                       *UpdatePlugins*
+================================================================================
+Author:  Evan Gray <egray1985@gmail.com>                         *UpdatePlugins*
 License: Same terms as Vim itself (see |license|)
 
-==============================================================================
-INTRODUCTION                                      *UpdatePlugins-introduction*
+================================================================================
+INTRODUCTION                                        *UpdatePlugins-introduction*
 
-This plugin is just a quick script that will update plugins, assuming they're
-a git repository.
+This plugin is just a quick script that will update plugins, assuming they're a
+git repository.
 
-:UpdatePlugins
-
-    Spin through plugin directories, and if it's a git repository, pull down
-    from master.
-
-==============================================================================
-CONFIGURATION                                    *UpdatePlugins-configuration*
+================================================================================
+QUICK-START                                          *UpdatePlugins-quick-start*
 
 By default, you can update your plugins by calling
 >
-        :UpdatePlugins
+    :UpdatePlugins
 <
 You can add your own custom bindings. Example:
 >
-        :nnoremap <leader>UP :call g:UpdatePlugins()<CR>
+    :nnoremap <leader>UP :call update_plugins#start()<CR>
 <
 
+================================================================================
+FEATURES                                                *UpdatePlugins-features*
+
+Attempts to update all plugins in your 'vim' plugin directory.
+
+If you're running version 8 or higher, it will first look in
+>
+    ~/.vim/pack/*/start/*/
+<
+
+If you're running version 7 or higher, or you're not using the 'pack' directory
+structure, it will look in
+>
+    ~/.vim/bundle/*/
+<
+
+Once finished, the plugin will 'echom' the results. To turn this feature off,
+see the 'CONFIGURATION' section below.
+
+Lastly, not too much of a feature, but since it loops through all plugins, it
+can take a minute to run. If you find you don't have time to let it run, ctrl-c
+is supported, and will cancel the remaining updates.
+
+================================================================================
+CONFIGURATION                                      *UpdatePlugins-configuration*
+If you're not using one of the two supported directory structures, you can set
+the location putting the following line in your .vimrc
+>
+    let g:update_plugins_directory = '/full/path/to/directory/'
+<
+
+If you're using a `pack`-like directory structure, use the `*` wildcard:
+>
+    let g:update_plugins_directory = '/full/path/to/pack/*/start/'
+<
+
+If you don't like the results lists printing when the plugin finishes, you can
+disable the behavior by putting the following line in your .vimrc
+>
+    let g:update_plugins_print_results = 0
+<
