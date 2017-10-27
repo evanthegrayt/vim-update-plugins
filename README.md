@@ -66,11 +66,12 @@ let g:update_plugins_directory = '/full/path/to/directory/'
 
 If you're using a `pack`-like directory with sub-directories, use the `*`
 wildcard. The `Vim80` example for Mac would be (and is, by default):
-`/Users/USER/.vim/pack/*/start/`
+`/Users/$USER/.vim/pack/*/start/`
 
-### Excluding a Directory
-By default, the plugin attempts to update any repository. If there are plugins
-that you don't want updated, you can create a list of plugins to not update.
+### Excluding Plugins
+By default, the plugin attempts to update all plugins. If there are plugins
+that you don't want updated, you can create a list of plugins to skip.
+
 Please note that the list elements must match the directory name of the plugin.
 Also note that calling `:UpdateSinglePlugin!` and `:UpdateAllPlugins!` (with the
 bang) will ignore this list!
@@ -101,6 +102,7 @@ For example, you could add the following lines to your `~/.vimrc`:
 command! PlugList call update_plugins#list_all_plugins()
 command! -bang PlugUpdateAll call update_plugins#update_all_plugins(<bang>0)
 command! -nargs=1 PlugUpdate call update_plugins#update_single_plugin(<bang>0, '<args>')
+
 ```
 
 ### Messages
