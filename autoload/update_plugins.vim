@@ -5,7 +5,7 @@
 
 " PUBLIC API
 
-function! update_plugins#update_all_plugins()
+function! update_plugins#update_all_plugins(bang)
   call s:create_arrays()
   let l:plugindirs = split(globpath(g:update_plugins_directory, '*', 0))
   call filter(l:plugindirs, 'isdirectory(v:val)')
@@ -15,7 +15,7 @@ function! update_plugins#update_all_plugins()
     return
   endif
   for l:plugindir in l:plugindirs
-    if s:is_excluded(fnamemodify(l:plugindir, ':t'))
+    if !a:bang && s:is_excluded(fnamemodify(l:plugindir, ':t'))
       call add(s:excluded, fnamemodify(l:plugindir, ':t'))
     elseif !s:update(l:plugindir)
       call s:warn("Script was stopped before it was finished!")
@@ -29,15 +29,17 @@ function! update_plugins#update_all_plugins()
   endif
 endfunction
 
-function! update_plugins#update_single_plugin(plugindir)
+function! update_plugins#update_single_plugin(bang, plugindir)
   call s:create_arrays()
-  let l:plugin = expand(g:update_plugins_directory . a:plugindir, 0)
-  if isdirectory(l:plugin)
-    call s:update(l:plugin)
+  let l:plugindir = expand(g:update_plugins_directory . a:plugindir, 0)
+  if !a:bang && s:is_excluded(a:plugindir)
+    call s:warn("Directory " . a:plugindir . " excluded by user!")
+  elseif isdirectory(l:plugindir)
+    call s:update(l:plugindir)
+    call s:print_results()
   else
     call s:warn(a:plugindir . " is not a directory!")
   endif
-  call s:print_results()
 endfunction
 
 function! update_plugins#list_all_plugins()

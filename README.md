@@ -19,13 +19,14 @@ at least `Vim70` (including `Vim80`) with something like
 [pathogen](https://github.com/tpope/vim-pathogen).
 
 ### Vim80 + Packages
-To install with `Vim80`, using the `packages` feature (replace
-PACKAGE_DIRECTORY with the package name)
+To install with `Vim80`, using the `packages` feature.
 
 ```bash
 cd ~/.vim/pack/PACKAGE_DIRECTORY/start/
 git clone https://github.com/evanthegrayt/update-plugins.git
 ```
+
+Make sure to replace `PACKAGE_DIRECTORY` with the package name!
 
 ### Pathogen
 To install using pathogen:
@@ -35,46 +36,25 @@ cd ~/.vim/bundle/
 git clone https://github.com/evanthegrayt/update-plugins.git
 ```
 
-## Quick Start
-By default, three commands are available:
-
-```vim
-:UpdateAllPlugins " Loop through all plugins and attempt to update them
-:UpdateSinglePlugin [PLUGIN] " Attempt to update the specified [PLUGIN]
-:ListAllPlugins " List all plugins, and whether or not they're a git repository
-```
-
-To change the default behavior, or to add custom mappings, see the
-`Configuration` section below.
-
 ## Features
 This plugin attempts to update your `vim` plugins, either one at a time using
 `:UpdateSinglePlugin [PLUGIN]`, or all at once using `:UpdateAllPlugins`. To use
 the former, for now, you must specify the directory name of the plugin. To see
-a list of available plugins, use `:ListAllPlugins`. Also, for now, if you call
-`:UpdateSinglePlugin` and the plugin is in your exclude list, it _will_ update
-the plugin, since you called it by name. This 'feature' may change in the
-future.
+a list of available plugins, use `:ListAllPlugins`.
 
 If you're running version 8 or higher, it will first look in
 `~/.vim/pack/*/start/`. If you're running version 7 or higher, or you're not
-using the `pack` directory structure, it will look in `~/.vim/bundle/`
+using the `pack` directory structure, it will look in `~/.vim/bundle/`. You are
+able to set a custom directory if yours is in a different location.
 
-Once finished, the plugin will `echom` the results. To turn this feature off,
-see the `Configuration` section below.
+You can create a list of plugins to exclude from updating. Calling either of the
+Update commands with a bang (!) will ignore the exclusion list.
+
+Once finished, the plugin will `echom` the results. You are able to turn this
+off if you don't like the output.
 
 ## Configuration
 If you don't like the default behavior, there are some modifications available.
-
-### Mappings
-If you do not like the default commands, you can create your own mappings. For
-example, you can add the following lines to your `~/.vimrc`:
-
-```vim
-nnoremap <leader>uap :call update_plugins#update_all_plugins()<CR>
-nnoremap <leader>usp :call update_plugins#update_single_plugin()<CR>
-nnoremap <leader>lap :call update_plugins#list_all_plugins()<CR>
-```
 
 ### Plugin Directory Location
 To manually set the location of your plugin directory, add the following line to
@@ -89,12 +69,14 @@ wildcard. The `Vim80` example for Mac would be (and is, by default):
 `/Users/USER/.vim/pack/*/start/`
 
 ### Excluding a Directory
-By default, the plugin attempts to update all directories. If there are plugins
+By default, the plugin attempts to update any repository. If there are plugins
 that you don't want updated, you can create a list of plugins to not update.
 Please note that the list elements must match the directory name of the plugin.
+Also note that calling `:UpdateSinglePlugin!` and `:UpdateAllPlugins!` (with the
+bang) will ignore this list!
 
 ```vim
-let g:update_plugins_exclude = ['plugin_name']
+let g:update_plugins_exclude = ['plugin_to_exclude', 'second_plugin_to_exclude']
 ```
 
 ### Pulling from Git
@@ -109,6 +91,16 @@ following line to your `~/.vimrc`:
 
 ```vim
 let g:update_plugins_git_command = 'git pull origin master'
+```
+
+### Commands
+If you do not like the default commands, you can create your own command names.
+For example, you could add the following lines to your `~/.vimrc`:
+
+```vim
+command! PlugList call update_plugins#list_all_plugins()
+command! -bang PlugUpdateAll call update_plugins#update_all_plugins(<bang>0)
+command! -nargs=1 PlugUpdate call update_plugins#update_single_plugin(<bang>0, '<args>')
 ```
 
 ### Messages
