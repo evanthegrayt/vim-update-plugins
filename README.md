@@ -66,16 +66,6 @@ see the `Configuration` section below.
 ## Configuration
 If you don't like the default behavior, there are some modifications available.
 
-### Mappings
-If you do not like the default commands, you can create your own mappings. For
-example, you can add the following lines to your `~/.vimrc`:
-
-```vim
-nnoremap <leader>uap :call update_plugins#update_all_plugins()<CR>
-nnoremap <leader>usp :call update_plugins#update_single_plugin()<CR>
-nnoremap <leader>lap :call update_plugins#list_all_plugins()<CR>
-```
-
 ### Plugin Directory Location
 To manually set the location of your plugin directory, add the following line to
 your `~/.vimrc`:
@@ -86,11 +76,11 @@ let g:update_plugins_directory = '/full/path/to/directory/'
 
 If you're using a `pack`-like directory with sub-directories, use the `*`
 wildcard. The `Vim80` example for Mac would be (and is, by default):
-`/Users/USER/.vim/pack/*/start/`
+`/Users/$USER/.vim/pack/*/start/`
 
-### Excluding a Directory
-By default, the plugin attempts to update all directories. If there are plugins
-that you don't want updated, you can create a list of plugins to not update.
+### Excluding Plugins
+By default, the plugin attempts to update all plugins. If there are plugins
+that you don't want updated, you can create a list of plugins to skip.
 Please note that the list elements must match the directory name of the plugin.
 
 ```vim
@@ -109,6 +99,16 @@ following line to your `~/.vimrc`:
 
 ```vim
 let g:update_plugins_git_command = 'git pull origin master'
+```
+
+### Mappings
+If you do not like the default commands, you can create your own mappings. For
+example, you can add the following lines to your `~/.vimrc`:
+
+```vim
+nnoremap <leader>uap :call update_plugins#update_all_plugins()<CR>
+nnoremap <leader>usp :call update_plugins#update_single_plugin()<CR>
+nnoremap <leader>lap :call update_plugins#list_all_plugins()<CR>
 ```
 
 ### Messages
