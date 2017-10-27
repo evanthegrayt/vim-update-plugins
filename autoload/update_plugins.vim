@@ -105,7 +105,7 @@ function! s:print_results()
 endfunction
 
 function! s:pull_from_git(plugindir)
-  return 'conflict'           " uncomment to test the plugin
+  "return 'conflict'           " uncomment to test the plugin
   "return 'Already up-to-date' " uncomment to test the plugin
   return system('cd ' . a:plugindir . ' && ' . g:update_plugins_git_command)
 endfunction
