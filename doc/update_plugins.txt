@@ -14,53 +14,70 @@ git repository.
 ================================================================================
 QUICK-START                                          *UpdatePlugins-quick-start*
 
-By default, you can update your plugins by calling
+By default, you can update all of your plugins by calling:
 >
-    :UpdatePlugins
+    :UpdateAllPlugins
 <
-You can add your own custom bindings. Example:
+To update a single plugin, call:
 >
-    :nnoremap <leader>UP :call update_plugins#start()<CR>
+    :UpdateSinglePlugin <plugin>
 <
+Note that '<plugin>' is the directory name of the plugin.
 
+To get a list of all your plugins, call:
+>
+    :ListAllPlugins
+<
 ================================================================================
 FEATURES                                                *UpdatePlugins-features*
 
-Attempts to update all plugins in your 'vim' plugin directory.
+Attempts to update plugins in your 'vim' plugin directory.
 
 If you're running version 8 or higher, it will first look in
 >
     ~/.vim/pack/*/start/*/
 <
-
 If you're running version 7 or higher, or you're not using the 'pack' directory
 structure, it will look in
 >
     ~/.vim/bundle/*/
 <
-
-Once finished, the plugin will 'echom' the results. To turn this feature off,
-see the 'CONFIGURATION' section below.
-
-Lastly, not too much of a feature, but since it loops through all plugins, it
-can take a minute to run. If you find you don't have time to let it run, ctrl-c
-is supported, and will cancel the remaining updates.
+Once finished, the plugin will 'echom' the results.
 
 ================================================================================
 CONFIGURATION                                      *UpdatePlugins-configuration*
+
+This plugin comes with the following commands:
+>
+    :UpdateAllPlugins
+    :UpdateSinglePlugin <plugin>
+    :ListAllPlugins
+<
+If you want to create your own mappings, you can use the following examples:
+>
+    :nnoremap <leader>UAP :call update_plugins#update_all_plugins()<CR>
+    :nnoremap <leader>USP :call update_plugins#update_single_plugin()<CR>
+    :nnoremap <leader>LAP :call update_plugins#list_all_plugins()<CR>
+<
 If you're not using one of the two supported directory structures, you can set
-the location putting the following line in your .vimrc
+the location putting the following line in your '.vimrc'
 >
     let g:update_plugins_directory = '/full/path/to/directory/'
 <
-
 If you're using a `pack`-like directory structure, use the `*` wildcard:
 >
     let g:update_plugins_directory = '/full/path/to/pack/*/start/'
 <
+If, for whatever reason, you don't want a plugin to be updated, you cann add
+this line in your '.vimrc'
+>
+    let g:update_plugins_exclude = ['plugin']
+<
+Note that 'plugin' is the directory name of the plugin.
 
 If you don't like the results lists printing when the plugin finishes, you can
-disable the behavior by putting the following line in your .vimrc
+disable the behavior by putting the following line in your '.vimrc'
 >
     let g:update_plugins_print_results = 0
 <
+
