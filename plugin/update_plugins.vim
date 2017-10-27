@@ -3,7 +3,7 @@
 " Description: Plugin to update git repo plugins
 " Date: October 2017
 
-if exists('g:update_plugins_is_loaded')
+if exists('g:update_plugins_is_loaded') || &cp
   finish
 elseif v:version < 700
   echomsg "UpdatePlugins: Vim version [ " . v:version . " not supported..."
@@ -37,7 +37,7 @@ if !exists("g:update_plugins_ignore")
 endif
 
 command! ListAllPlugins call update_plugins#list_all_plugins()
-command! UpdateAllPlugins call update_plugins#update_all_plugins()
-command! -nargs=+ UpdateSinglePlugin
-      \ call update_plugins#update_single_plugin('<args>')
+command! -bang UpdateAllPlugins call update_plugins#update_all_plugins(<bang>0)
+command! -bang -nargs=1 UpdateSinglePlugin
+      \ call update_plugins#update_single_plugin(<bang>0, '<args>')
 

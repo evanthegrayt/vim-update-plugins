@@ -3,7 +3,7 @@ update-plugins UpdatePlugins update_plugins
 
 ================================================================================
 Author:  Evan Gray <egray1985@gmail.com>                         *UpdatePlugins*
-License: Same terms as Vim itself (see |license|)
+License: MIT License
 
 ================================================================================
 INTRODUCTION                                        *UpdatePlugins-introduction*
@@ -16,13 +16,16 @@ QUICK-START                                          *UpdatePlugins-quick-start*
 
 By default, you can update all of your plugins by calling:
 >
-    :UpdateAllPlugins
+    :UpdateAllPlugins[!]
 <
 To update a single plugin, call:
 >
-    :UpdateSinglePlugin <plugin>
+    :UpdateSinglePlugin[!] <plugin>
 <
 Note that '<plugin>' is the directory name of the plugin.
+
+Adding the bang (!) to the end of these commands tells the plugin to ignore the
+exclusion list.
 
 To get a list of all your plugins, call:
 >
@@ -49,15 +52,15 @@ CONFIGURATION                                      *UpdatePlugins-configuration*
 
 This plugin comes with the following commands:
 >
-    :UpdateAllPlugins
-    :UpdateSinglePlugin <plugin>
+    :UpdateAllPlugins[!]
+    :UpdateSinglePlugin[!] <plugin>
     :ListAllPlugins
 <
 If you want to create your own mappings, you can use the following examples:
 >
-    :nnoremap <leader>UAP :call update_plugins#update_all_plugins()<CR>
-    :nnoremap <leader>USP :call update_plugins#update_single_plugin()<CR>
-    :nnoremap <leader>LAP :call update_plugins#list_all_plugins()<CR>
+    command! PlugList call update_plugins#list_all_plugins()
+    command! -bang PlugUpdateAll call update_plugins#update_all_plugins(<bang>0)
+    command! -bang -nargs=1 PlugUpdate call update_plugins#update_single_plugin(<bang>0, '<args>')
 <
 If you're not using one of the two supported directory structures, you can set
 the location putting the following line in your '.vimrc'
@@ -68,12 +71,12 @@ If you're using a `pack`-like directory structure, use the `*` wildcard:
 >
     let g:update_plugins_directory = '/full/path/to/pack/*/start/'
 <
-If, for whatever reason, you don't want a plugin to be updated, you cann add
-this line in your '.vimrc'
+If you don't want a plugin to be updated, you can add this line in your '.vimrc'
 >
-    let g:update_plugins_exclude = ['plugin']
+    let g:update_plugins_exclude = ['plugin_to_exclude', 'second_plugin_to_exclude']
 <
-Note that 'plugin' is the directory name of the plugin.
+Note that 'plugin' is the directory name of the plugin. If you need to update
+plugins that are in the exclusion list, call the command with a bang (!).
 
 If you don't like the results lists printing when the plugin finishes, you can
 disable the behavior by putting the following line in your '.vimrc'
