@@ -8,18 +8,18 @@ vimscript. This is the first plugin I've made, so apologies if it's crude.
 Also, I'm aware that (better) plugins like this exist; it was more of a
 learning experience for me.
 
-This plugin is compatible with `Vim80`, and its "new" `packages` directory
+This plugin is compatible with `vim-8`, and its "new" `packages` directory
 structure (`~/.vim/pack/*/start/*/`), but still supports the old "standard"
 `bundle` directory structure (`~/.vim/bundle/`).
 
 ## Installation
 Since this plugin is for updating other plugins from `git` repositories, I
-assume you're either running `Vim80` with the `packages` feature, or using
-at least `Vim70` (including `Vim80`) with something like
+assume you're either running `vim-8` with the `packages` feature, or using
+at least `vim-7` (including `vim-8`) with something like
 [pathogen](https://github.com/tpope/vim-pathogen).
 
-### Vim80 + Packages
-To install with `Vim80`, using the `packages` feature.
+### vim-8 + Packages
+To install with `vim-8`, using the `packages` feature.
 
 ```bash
 cd ~/.vim/pack/PACKAGE_DIRECTORY/start/
@@ -65,7 +65,7 @@ let g:update_plugins_directory = '/full/path/to/directory/'
 ```
 
 If you're using a `pack`-like directory with sub-directories, use the `*`
-wildcard. The `Vim80` example for Mac would be (and is, by default):
+wildcard. The `vim-8` example for Mac would be (and is, by default):
 `/Users/$USER/.vim/pack/*/start/`
 
 ### Excluding Plugins
