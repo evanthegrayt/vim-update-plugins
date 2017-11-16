@@ -15,6 +15,10 @@ if !exists("g:update_plugins_print_results")
   let g:update_plugins_print_results = 1
 endif
 
+if !exists('g:update_plugins_exclude')
+  let g:update_plugins_exclude = []
+endif
+
 if !exists('g:update_plugins_git_command')
   let g:update_plugins_git_command =
         \ 'git pull && git submodule update --init --recursive'
