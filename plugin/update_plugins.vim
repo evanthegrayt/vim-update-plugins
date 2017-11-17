@@ -35,11 +35,6 @@ if !exists("g:update_plugins_directory")
   endif
 endif
 
-if !exists("g:update_plugins_ignore")
-  " TODO: add UpdateAllPlugins! command that ignores the ignore list
-  let g:update_plugins_ignore = []
-endif
-
 command! ListAllPlugins call update_plugins#list_all_plugins()
 command! -bang UpdateAllPlugins call update_plugins#update_all_plugins(<bang>0)
 command! -bang -nargs=1 UpdateSinglePlugin
