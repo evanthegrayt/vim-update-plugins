@@ -2,7 +2,6 @@
 Easily update vim plugins.
 
 ### About
-
 I recently had an itch to learn something new, so I decided to try some
 vimscript. This is the first plugin I've made, so apologies if it's crude.
 Also, I'm aware that (better) plugins like this exist; it was more of a
@@ -13,6 +12,10 @@ structure (`~/.vim/pack/*/start/*/`), but still supports the old "standard"
 `bundle` directory structure (`~/.vim/bundle/`).
 
 ## Installation
+Please note, the current version works with unix-like operating systems. The
+next issue I'll be working on is getting the plugin working with Windows. This
+plugin is under active development, so please check back soon.
+
 Since this plugin is for updating other plugins from `git` repositories, I
 assume you're either running `vim-8` with the `packages` feature, or using
 at least `vim-7` (including `vim-8`) with something like
