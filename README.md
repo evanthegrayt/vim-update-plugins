@@ -126,3 +126,8 @@ This is just a little project I'm working on; I don't really expect people to
 use it or contribute, but if you're bored, you're more than welcome to help
 with issues or make suggestions.
 
+## Self-Promotion
+I do these projects for fun, and I enjoy knowing that they're helpful to people.
+Consider starring [the
+repository](https://github.com/evanthegrayt/vim-update-plugins) if you like it!
+If you love it, follow me [on github](https://github.com/evanthegrayt)!
