@@ -29,6 +29,9 @@ git clone https://github.com/evanthegrayt/vim-update-plugins.git \
     ~/.vim/pack/evanthegrayt/start/vim-update-plugins
 ```
 
+Don't forget to update your help documentation by running `:helptags` on the
+`doc` directory, or just update all plugins' help with `:helptags ALL`.
+
 ### Pathogen
 To install using pathogen:
 
@@ -36,6 +39,9 @@ To install using pathogen:
 git clone https://github.com/evanthegrayt/vim-update-plugins.git \
     ~/.vim/bundle/vim-update-plugins
 ```
+
+Don't forget to update your help documentation by running `:helptags` on the
+`doc` directory, or just update all plugins' help with `:Helptags`.
 
 ## Features
 This plugin attempts to update your `vim` plugins, either one at a time using
