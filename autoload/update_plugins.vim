@@ -6,6 +6,11 @@
 " PUBLIC API
 
 function! update_plugins#UpdateAllPlugins(bang) abort
+  if !executable('git')
+    call s:Warn("git not installed!")
+    return
+  endif
+
   call s:CreateArrays()
   let l:plugindirs = s:GetPluginDirs()
 
@@ -48,6 +53,11 @@ function! update_plugins#ListAllPlugins() abort
 endfunction
 
 function! update_plugins#UpdateSinglePlugin(bang, plugindir) abort
+  if !executable('git')
+    call s:Warn("git not installed!")
+    return
+  endif
+
   call s:CreateArrays()
 
   let l:plugindirs = s:GetPluginDirs()
