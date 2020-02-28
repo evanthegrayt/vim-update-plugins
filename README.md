@@ -6,28 +6,33 @@ I recently had an itch to learn something new, so I decided to try some
 vimscript. I'm aware that (better) plugins like this exist; it was more of a
 learning experience for me, but it does work!
 
-This plugin is compatible with `vim-8`, and its "new" `packages` directory
-structure (`~/.vim/pack/*/{start,opt}/*/`), but still supports the old "standard"
-`bundle` directory structure (`~/.vim/bundle/`). This directory, and a few other
-things, are customizable.
+This plugin is compatible with `vim-8`, and its `packages` directory structure
+(`~/.vim/pack/*/{start,opt}/*/`), but still supports the old "standard" `bundle`
+directory structure (`~/.vim/bundle/`). This directory, and a few other things,
+are customizable.
 
 ## Installation
 Please note, the current version works with unix-like operating systems. None of
 this has been tested on Windows.
 
 Since this plugin is for updating other plugins from `git` repositories, I
-assume you're either running `vim-8` with the `packages` feature, or using
-at least `vim-7` (including `vim-8`) with something like
+assume you're either running `vim-8` with the `packages` feature, or using at
+least `vim-7` (including `vim-8`) with something like
 [pathogen](https://github.com/tpope/vim-pathogen).
 
 ### vim-8 + Packages
-To install with `vim-8`, using the `packages` feature.
+To install with version 8, using the `packages` feature:
 
 ```bash
 mkdir -p ~/.vim/pack/evanthegrayt/start/
 git clone https://github.com/evanthegrayt/vim-update-plugins.git \
     ~/.vim/pack/evanthegrayt/start/vim-update-plugins
 ```
+
+Initially, the plugin only checked the `pack/` directory if `has('packages')`
+was true, but pathogen also understands the `pack/` directory structure, even if
+you're not on version 8. For this reason, `pack/` is checked even if
+`has('packages')` is false.
 
 ### Pathogen
 To install using pathogen:

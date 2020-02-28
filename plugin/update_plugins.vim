@@ -25,7 +25,7 @@ if !exists('g:update_plugins_git_command')
 endif
 
 if !exists('g:update_plugins_directory')
-  if has('packages') && isdirectory($HOME . '/.vim/pack/')
+  if isdirectory($HOME . '/.vim/pack/')
     let g:update_plugins_directory = $HOME . '/.vim/pack/*/{start,opt}/'
   elseif isdirectory($HOME . '/.vim/bundle/')
     let g:update_plugins_directory = $HOME . '/.vim/bundle/'
