@@ -1,5 +1,5 @@
-# UpdatePlugins (vim)
-Easily update vim plugins.
+# Update Plugins (vim)
+Easily update `vim` plugins with `git`.
 
 ### About
 I recently had an itch to learn something new, so I decided to try some
