@@ -103,9 +103,9 @@ If you do not like the default commands, you can create your own command names.
 For example, you could add the following lines to your `~/.vimrc`:
 
 ```vim
-command! PlugList call update_plugins#list_all_plugins()
-command! -bang PlugUpdateAll call update_plugins#update_all_plugins(<bang>0)
-command! -nargs=1 PlugUpdate call update_plugins#update_single_plugin(<bang>0, '<args>')
+command! PlugList call update_plugins#ListAllPlugins()
+command! -bang PlugUpdateAll call update_plugins#UpdateAllPlugins(<bang>0)
+command! -nargs=1 PlugUpdate call update_plugins#UpdateSinglePlugin(<bang>0, '<args>')
 
 ```
 
