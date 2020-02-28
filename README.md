@@ -29,11 +29,6 @@ git clone https://github.com/evanthegrayt/vim-update-plugins.git \
     ~/.vim/pack/evanthegrayt/start/vim-update-plugins
 ```
 
-Initially, the plugin only checked the `pack/` directory if `has('packages')`
-was true, but pathogen also understands the `pack/` directory structure, even if
-you're not on version 8. For this reason, `pack/` is checked even if
-`has('packages')` is false.
-
 ### Pathogen
 To install using pathogen:
 
@@ -48,10 +43,13 @@ This plugin attempts to update your `vim` plugins, either one at a time using
 the former, for now, you must specify the directory name of the plugin. To see
 a list of available plugins, use `:ListAllPlugins`.
 
-If you're running version 8 or higher, it will first look in
-`~/.vim/pack/*/{start,opt}/`. If you're running version 7 or higher, or you're not
-using the `pack` directory structure, it will look in `~/.vim/bundle/`. You are
-able to set a custom directory if yours is in a different location.
+The plugin will first look in `~/.vim/pack/*/{start,opt}/`.  Initially, the
+plugin only checked the `pack/` directory if `has('packages')` was true, but
+pathogen also understands the `pack/` directory structure, even if you're not on
+version 8. For this reason, `pack/` is checked even if `has('packages')` is
+false. If you're not using the `pack` directory structure, it will look in
+`~/.vim/bundle/`. You are able to set a custom directory if yours is in a
+different location.
 
 You can create a list of plugins to exclude from updating. Calling either of the
 Update commands with a bang (!) will ignore the exclusion list.
