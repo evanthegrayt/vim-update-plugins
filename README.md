@@ -3,9 +3,8 @@ Easily update `vim` plugins with `git`.
 
 ### About
 I recently had an itch to learn something new, so I decided to try some
-vimscript. This is the first plugin I've made, so apologies if it's crude.
-Also, I'm aware that (better) plugins like this exist; it was more of a
-learning experience for me.
+vimscript. I'm aware that (better) plugins like this exist; it was more of a
+learning experience for me, but it does work!
 
 This plugin is compatible with `vim-8`, and its "new" `packages` directory
 structure (`~/.vim/pack/*/{start,opt}/*/`), but still supports the old "standard"
