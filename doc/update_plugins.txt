@@ -1,86 +1,81 @@
-update-plugins.txt    Updates all plugins for vim if they're a git repository
-update-plugins UpdatePlugins update_plugins
+*update-plugins.txt*
 
-================================================================================
-Author:  Evan Gray <egray1985@gmail.com>                         *UpdatePlugins*
+Author:  Evan Gray <evanthegrayt@vivaldi.net>                   *update-plugins*
 License: MIT License
 
-================================================================================
-INTRODUCTION                                        *UpdatePlugins-introduction*
+INTRODUCTION                                       *update-plugins-introduction*
 
 This plugin is just a quick script that will update plugins, assuming they're a
 git repository.
 
-================================================================================
-QUICK-START                                          *UpdatePlugins-quick-start*
+COMMANDS                                               *update-plugins-commands*
 
-By default, you can update all of your plugins by calling:
+                                          *UpdateAllPlugins* *:UpdateAllPlugins*
+:UpdateAllPlugins[!]              Update all plugins that are git repositories.
+                                  Use the ! to force-update excluded plugins.
+
+                                      *UpdateSinglePlugin* *:UpdateSinglePlugin*
+:UpdateSinglePlugin[!] {plugin}   Update {plugin} if it's a git repository.
+                                  Use the ! to force-update excluded plugins.
+
+                                              *ListAllPlugins* *:ListAllPlugins*
+:ListAllPlugins                   List all plugins, broken down by plugins that
+                                  are excluded, git repositories, and non-git
+                                  repositories.
+
+FEATURES                                               *update-plugins-features*
+
+Attempts to update plugins in your vim plugin directory.
+
+If you're running version 8 or higher, it will first look for:
 >
-    :UpdateAllPlugins[!]
+    ~/.vim/pack/*/{start,opt}/*/
 <
-To update a single plugin, call:
->
-    :UpdateSinglePlugin[!] <plugin>
-<
-Note that '<plugin>' is the directory name of the plugin.
-
-Adding the bang (!) to the end of these commands tells the plugin to ignore the
-exclusion list.
-
-To get a list of all your plugins, call:
->
-    :ListAllPlugins
-<
-================================================================================
-FEATURES                                                *UpdatePlugins-features*
-
-Attempts to update plugins in your 'vim' plugin directory.
-
-If you're running version 8 or higher, it will first look in
->
-    ~/.vim/pack/*/start/*/
-<
-If you're running version 7 or higher, or you're not using the 'pack' directory
-structure, it will look in
+If you're running version 7 or higher, or you're not using the pack directory
+structure, it will look for:
 >
     ~/.vim/bundle/*/
 <
-Once finished, the plugin will 'echom' the results.
+Once finished, the plugin will 'echomsg' the results.
 
-================================================================================
-CONFIGURATION                                      *UpdatePlugins-configuration*
+CONFIGURATION                                     *update-plugins-configuration*
 
 This plugin comes with the following commands:
 >
     :UpdateAllPlugins[!]
-    :UpdateSinglePlugin[!] <plugin>
+    :UpdateSinglePlugin[!] {plugin}
     :ListAllPlugins
 <
 If you want to create your own mappings, you can use the following examples:
 >
-    command! PlugList call update_plugins#list_all_plugins()
-    command! -bang PlugUpdateAll call update_plugins#update_all_plugins(<bang>0)
-    command! -bang -nargs=1 PlugUpdate call update_plugins#update_single_plugin(<bang>0, '<args>')
+    command! PlugList call update_plugins#ListAllPlugins()
+    command! -bang PlugUpdateAll call update_plugins#UpdateAllPlugins(<bang>0)
+    command! -bang -nargs=1 PlugUpdate call update_plugins#UpdateSinglePlugin(<bang>0, <f-args>)
 <
 If you're not using one of the two supported directory structures, you can set
-the location putting the following line in your '.vimrc'
+the location putting the following line in your vimrc:
 >
     let g:update_plugins_directory = '/full/path/to/directory/'
 <
-If you're using a `pack`-like directory structure, use the `*` wildcard:
+If you're using a pack-like directory structure, use globbing wildcards:
 >
-    let g:update_plugins_directory = '/full/path/to/pack/*/start/'
+    let g:update_plugins_directory = '/full/path/to/pack/*/{start,opt}/'
 <
-If you don't want a plugin to be updated, you can add this line in your '.vimrc'
+If you don't want a plugin to be updated, you can add this line in your vimrc
 >
-    let g:update_plugins_exclude = ['plugin_to_exclude', 'second_plugin_to_exclude']
+    let g:update_plugins_exclude = ["plugin_to_exclude", "second_plugin_to_exclude"]
 <
-Note that 'plugin' is the directory name of the plugin. If you need to update
+Note that plugin is the directory name of the plugin. If you need to update
 plugins that are in the exclusion list, call the command with a bang (!).
 
 If you don't like the results lists printing when the plugin finishes, you can
-disable the behavior by putting the following line in your '.vimrc'
+disable the behavior by putting the following line in your .vimrc:
 >
     let g:update_plugins_print_results = 0
 <
 
+BUGS                                                       *update-plugins-bugs*
+
+My latest version doesn't seem have this bug, but the first version had an issue
+where, if the user pushed <ctrl-c>, the buffer would need to be redrawn. If this
+somehow happens to you, you can use `:redraw!` to fix it.

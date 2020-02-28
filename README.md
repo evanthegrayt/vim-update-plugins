@@ -87,14 +87,14 @@ let g:update_plugins_exclude = ['plugin_to_exclude', 'second_plugin_to_exclude']
 The default command this plugin uses to update repositories is:
 
 ```bash
-git pull && git submodule update --init --recursive
+git checkout master && git pull origin master
 ```
 
 The plugin allows you to change this command. For example, you can add the
 following line to your `~/.vimrc`:
 
 ```vim
-let g:update_plugins_git_command = 'git pull origin master'
+let g:update_plugins_git_command = 'git pull && git submodule update --init --recursive'
 ```
 
 ### Commands
