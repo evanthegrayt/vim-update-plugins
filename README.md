@@ -8,8 +8,9 @@ Also, I'm aware that (better) plugins like this exist; it was more of a
 learning experience for me.
 
 This plugin is compatible with `vim-8`, and its "new" `packages` directory
-structure (`~/.vim/pack/*/start/*/`), but still supports the old "standard"
-`bundle` directory structure (`~/.vim/bundle/`).
+structure (`~/.vim/pack/*/{start,opt}/*/`), but still supports the old "standard"
+`bundle` directory structure (`~/.vim/bundle/`). This directory, and a few other
+things, are customizable.
 
 ## Installation
 Please note, the current version works with unix-like operating systems. The
@@ -69,7 +70,7 @@ let g:update_plugins_directory = '/full/path/to/directory/'
 
 If you're using a `pack`-like directory with sub-directories, use the `*`
 wildcard. The `vim-8` example for Mac would be (and is, by default):
-`/Users/$USER/.vim/pack/*/start/`
+`$HOME/.vim/pack/*/{start,opt}/`
 
 ### Excluding Plugins
 By default, the plugin attempts to update all plugins. If there are plugins
