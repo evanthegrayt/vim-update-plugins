@@ -1,4 +1,4 @@
-*update-plugins.txt*
+*update_plugins.txt*
 
 Author:  Evan Gray <evanthegrayt@vivaldi.net>                   *update-plugins*
 License: MIT License
@@ -23,51 +23,60 @@ COMMANDS                                               *update-plugins-commands*
                                   are excluded, git repositories, and non-git
                                   repositories.
 
-FEATURES                                               *update-plugins-features*
+DIRECTORIES                                         *update-plugins-directories*
 
-Attempts to update plugins in your vim plugin directory.
-
-If you're running version 8 or higher, it will first look for:
+If |g:update_plugins_directory| is not set, the plugin will first look for:
 >
     ~/.vim/pack/*/{start,opt}/*/
 <
-If you're running version 7 or higher, or you're not using the pack directory
-structure, it will look for:
+
+If the pack directory doesn't exist, it will look for:
 >
     ~/.vim/bundle/*/
 <
-Once finished, the plugin will 'echomsg' the results.
 
 CONFIGURATION                                     *update-plugins-configuration*
 
+                                                *update-plugins-custom-commands*
+Custom Commands~
 This plugin comes with the following commands:
 >
     :UpdateAllPlugins[!]
     :UpdateSinglePlugin[!] {plugin}
     :ListAllPlugins
 <
+
 If you want to create your own mappings, you can use the following examples:
 >
     command! PlugList call update_plugins#ListAllPlugins()
     command! -bang PlugUpdateAll call update_plugins#UpdateAllPlugins(<bang>0)
     command! -bang -nargs=1 PlugUpdate call update_plugins#UpdateSinglePlugin(<bang>0, <f-args>)
 <
+                                                    *g:update_plugins_directory*
+Changing the default plugin directory~
 If you're not using one of the two supported directory structures, you can set
 the location putting the following line in your vimrc:
 >
     let g:update_plugins_directory = '/full/path/to/directory/'
 <
+
 If you're using a pack-like directory structure, use globbing wildcards:
 >
     let g:update_plugins_directory = '/full/path/to/pack/*/{start,opt}/'
 <
+
+                                                      *g:update_plugins_exclude*
+Excluding Plugins from Updating~
 If you don't want a plugin to be updated, you can add this line in your vimrc
 >
     let g:update_plugins_exclude = ["plugin_to_exclude", "second_plugin_to_exclude"]
 <
+
 Note that plugin is the directory name of the plugin. If you need to update
 plugins that are in the exclusion list, call the command with a bang (!).
 
+                                                *g:update_plugins_print_results*
+Silencing Output~
 If you don't like the results lists printing when the plugin finishes, you can
 disable the behavior by putting the following line in your .vimrc:
 >
