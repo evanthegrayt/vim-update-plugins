@@ -13,9 +13,8 @@ structure (`~/.vim/pack/*/{start,opt}/*/`), but still supports the old "standard
 things, are customizable.
 
 ## Installation
-Please note, the current version works with unix-like operating systems. The
-next issue I'll be working on is getting the plugin working with Windows. This
-plugin is under active development, so please check back soon.
+Please note, the current version works with unix-like operating systems. None of
+this has been tested on Windows.
 
 Since this plugin is for updating other plugins from `git` repositories, I
 assume you're either running `vim-8` with the `packages` feature, or using
