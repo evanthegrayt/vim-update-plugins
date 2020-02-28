@@ -43,21 +43,45 @@ function! update_plugins#ListAllPlugins() abort
       call add(s:not_git, fnamemodify(l:plugindir, ':t'))
     endif
   endfor
+
   call s:PrintResults()
 endfunction
 
 function! update_plugins#UpdateSinglePlugin(bang, plugindir) abort
   call s:CreateArrays()
 
-  let l:plugindir = expand(g:update_plugins_directory . a:plugindir, 0)
+  let l:plugindirs = s:GetPluginDirs()
+  let l:plugindirsbase = deepcopy(l:plugindirs)
+  call map(l:plugindirsbase, 'fnamemodify(v:val, ":t")')
+  let l:idx = match(l:plugindirsbase, a:plugindir)
+  if l:idx == -1
+    call s:Warn(a:plugindir . ' is not a plugin!')
+    return
+  endif
+
+  let l:plugindir = l:plugindirs[l:idx]
+
   if !a:bang && s:IsExcluded(a:plugindir)
     call s:Warn('Directory ' . a:plugindir . ' excluded by user!')
-  elseif isdirectory(l:plugindir)
-    call s:Update(l:plugindir)
-    call s:PrintResults()
+    return
   else
-    call s:Warn(a:plugindir . ' is not a directory!')
+    call s:Update(l:plugindir)
   endif
+
+  call s:PrintResults()
+endfunction
+
+function! update_plugins#Completion(...) abort
+  call s:CreateArrays()
+
+  let l:plugindirs = s:GetPluginDirs()
+  for l:plugindir in l:plugindirs
+    if filereadable(l:plugindir . '/.git')
+      call add(s:is_git, fnamemodify(l:plugindir, ':t'))
+    endif
+  endfor
+
+  return s:is_git
 endfunction
 
 " PRIVATE API

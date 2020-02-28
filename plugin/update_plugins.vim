@@ -37,5 +37,5 @@ endif
 
 command! ListAllPlugins call update_plugins#ListAllPlugins()
 command! -bang UpdateAllPlugins call update_plugins#UpdateAllPlugins(<bang>0)
-command! -bang -nargs=1 UpdateSinglePlugin call update_plugins#UpdateSinglePlugin(<bang>0, <f-args>)
+command! -bang -nargs=1 -complete=customlist,update_plugins#Completion UpdateSinglePlugin call update_plugins#UpdateSinglePlugin(<bang>0, <f-args>)
 
